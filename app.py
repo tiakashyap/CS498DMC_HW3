@@ -21,13 +21,13 @@ secondary_collection = vehicles.with_options(read_preference=ReadPreference.SECO
 def insert_fast():
     doc = request.get_json(force=True)
     result = fast_collection.insert_one(doc)
-    return str(result.inserted_id)
+    return jsonify(str(result.inserted_id))
 
 @app.route("/insert-safe", methods=["POST"])
 def insert_safe():
     doc = request.get_json(force=True)
     result = safe_collection.insert_one(doc)
-    return str(result.inserted_id)
+    return jsonify(str(result.inserted_id))
 
 @app.route("/count-tesla-primary", methods=["GET"])
 def count_tesla_primary():
